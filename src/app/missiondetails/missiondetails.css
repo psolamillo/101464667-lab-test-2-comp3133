@@ -1,0 +1,78 @@
+.details-container {
+  max-width: 800px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+}
+
+h2 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.detail-card {
+  padding: 20px;
+}
+
+.detail-layout {
+  display: flex;
+  gap: 25px;
+  margin-bottom: 20px;
+}
+
+.patch-image {
+  flex-shrink: 0;
+}
+
+.patch-image img {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+}
+
+.detail-info {
+  flex: 1;
+}
+
+.mission-title {
+  color: #1976d2;
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+}
+
+.detail-info p {
+  margin: 4px 0;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.section-title {
+  color: #e65100;
+  margin: 12px 0 5px 0;
+  font-size: 1rem;
+}
+
+.launch-details-title {
+  color: #c62828;
+}
+
+.launch-details {
+  font-size: 0.9rem;
+  color: #444;
+  line-height: 1.5;
+}
+
+.links {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.links a {
+  color: #1976d2;
+}
+
+.back-button {
+  margin-top: 20px;
+  text-align: center;
+}

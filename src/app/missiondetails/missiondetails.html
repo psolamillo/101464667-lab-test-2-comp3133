@@ -1,0 +1,62 @@
+@if(mission){
+<div class="details-container">
+
+    <h2>SpaceX Mission Details</h2>
+
+    <mat-card class="detail-card">
+        <div class="detail-layout">
+
+            <div class="patch-image">
+                @if(mission.links?.mission_patch_small){
+                    <img [src]="mission.links?.mission_patch_small" alt="{{ mission.mission_name }}" />
+                }
+            </div>
+
+            <div class="detail-info">
+                <h3 class="mission-title">Mission - {{ mission.mission_name }}</h3>
+                <p>Name : {{ mission.mission_name }}</p>
+                <p>Launch Year: {{ mission.launch_year }}</p>
+
+                <h4 class="section-title">Rocket</h4>
+                <p>Name : {{ mission.rocket?.rocket_name || 'N/A' }}</p>
+                <p>Type : {{ mission.rocket?.rocket_type || 'N/A' }}</p>
+
+                <h4 class="section-title">Launch Site</h4>
+                <p>Name : {{ mission.launch_site?.site_name_long || 'N/A' }}</p>
+            </div>
+
+        </div>
+
+        <mat-card-content>
+            <h4 class="section-title launch-details-title">Launch Details</h4>
+            <p class="launch-details">{{ mission.details || 'No details available.' }}</p>
+
+            <h4 class="section-title">More Info on Launch Details</h4>
+            <div class="links">
+                @if(mission.links?.article_link){
+                    <a [href]="mission.links?.article_link" target="_blank" mat-icon-button>
+                        <mat-icon>article</mat-icon>
+                    </a>
+                }
+                @if(mission.links?.wikipedia){
+                    <a [href]="mission.links?.wikipedia" target="_blank" mat-icon-button>
+                        <mat-icon>language</mat-icon>
+                    </a>
+                }
+                @if(mission.links?.video_link){
+                    <a [href]="mission.links?.video_link" target="_blank" mat-icon-button>
+                        <mat-icon>play_circle</mat-icon>
+                    </a>
+                }
+            </div>
+        </mat-card-content>
+    </mat-card>
+
+    <div class="back-button">
+        <button mat-raised-button routerLink="/missionlist">Back to Mission List</button>
+    </div>
+
+</div>
+} @else {
+    <p>Loading mission details...</p>
+}
