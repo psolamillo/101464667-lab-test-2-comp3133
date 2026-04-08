@@ -1,0 +1,57 @@
+<div class="filter-container">
+
+    <div class="sidebar">
+        <h3>Launch Date</h3>
+        <div class="year-buttons">
+            @for(year of launchYears; track year){
+                <button mat-stroked-button
+                    [class.selected]="selectedYear === year"
+                    (click)="filterByYear(year)">
+                    {{ year }}
+                </button>
+            }
+        </div>
+
+        <h3>Successful Launch</h3>
+        <div class="filter-buttons">
+            <button mat-stroked-button
+                [class.selected]="selectedLaunchSuccess === 'true'"
+                (click)="filterByLaunchSuccess('true')">true</button>
+            <button mat-stroked-button
+                [class.selected]="selectedLaunchSuccess === 'false'"
+                (click)="filterByLaunchSuccess('false')">false</button>
+        </div>
+
+        <h3>Successful Land</h3>
+        <div class="filter-buttons">
+            <button mat-stroked-button
+                [class.selected]="selectedLandSuccess === 'true'"
+                (click)="filterByLandSuccess('true')">true</button>
+            <button mat-stroked-button
+                [class.selected]="selectedLandSuccess === 'false'"
+                (click)="filterByLandSuccess('false')">false</button>
+        </div>
+    </div>
+
+    <div class="grid">
+        @for(mission of filteredMissions; track mission.flight_number){
+            <mat-card class="mission-card" [routerLink]="['/missiondetails', mission.flight_number]">
+                <div class="patch-container">
+                    @if(mission.links?.mission_patch_small){
+                        <img [src]="mission.links?.mission_patch_small" alt="{{ mission.mission_name }}" />
+                    }
+                </div>
+                <mat-card-content>
+                    <h4>{{ mission.mission_name }} #{{ mission.flight_number }}</h4>
+                    <p><strong>Mission Ids</strong> : -</p>
+                    <p><strong>Launch Year</strong> : {{ mission.launch_year }}</p>
+                    <p><strong>Successful Launch</strong> : {{ mission.launch_success ?? 'No Data' }}</p>
+                    <p><strong>Successful Landing</strong> : {{ mission.land_success ?? 'No Data' }}</p>
+                </mat-card-content>
+            </mat-card>
+        } @empty {
+            <h3 class="empty">No matching missions found</h3>
+        }
+    </div>
+
+</div>
