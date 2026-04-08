@@ -1,0 +1,21 @@
+<h2>SpaceX Mission Launch List</h2>
+
+<div class="mission-list">
+
+    @for(mission of missions; track mission.flight_number){
+        <mat-card class="mission-card" [routerLink]="['/missiondetails', mission.flight_number]">
+            <mat-card-header>
+                @if(mission.links?.mission_patch_small){
+                    <img mat-card-avatar [src]="mission.links?.mission_patch_small" alt="{{ mission.mission_name }}" />
+                }
+                <mat-card-title>{{ mission.mission_name }}</mat-card-title>
+                <mat-card-subtitle>{{ mission.launch_year }}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                <p class="details">{{ mission.details || 'No details available.' }}</p>
+            </mat-card-content>
+        </mat-card>
+    } @empty {
+        <h3 class="empty">No missions found</h3>
+    }
+</div>
